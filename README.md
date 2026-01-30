@@ -6,10 +6,16 @@ Full stack application built with C#, Javascript, HTML & MVC Architecture.
 
 🧱 Technologies
 C#
+
 ASP.NET MVC Request
+
 Javasript
+
 HTML
+
 CSS
+
 SQL Server
+
 API 
 
