@@ -1,0 +1,40 @@
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\bin\Debug\ApplicationCore.dll.config
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\bin\Debug\ApplicationCore.dll
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\bin\Debug\ApplicationCore.pdb
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\bin\Debug\Antlr3.Runtime.dll
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\bin\Debug\Infraestructure.dll
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\bin\Debug\WebGrease.dll
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\bin\Debug\log4net.dll
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\bin\Debug\EntityFramework.dll
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\bin\Debug\Infraestructure.pdb
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\bin\Debug\Infraestructure.dll.config
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\bin\Debug\Antlr3.Runtime.pdb
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\bin\Debug\log4net.xml
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\bin\Debug\EntityFramework.xml
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\obj\Debug\ApplicationCore.csproj.AssemblyReference.cache
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\obj\Debug\ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\obj\Debug\ApplicationCore.csproj.CopyComplete
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\obj\Debug\ApplicationCore.dll
+C:\Users\Alonso Arce Mora\Documents\UTN\I Cuatrimestre 2023\Programacion en Ambiente Web II, I-23, C 02\Proyecto\appCondominiosBuenaVista\ApplicationCore\obj\Debug\ApplicationCore.pdb
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\bin\Debug\ApplicationCore.dll.config
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\bin\Debug\ApplicationCore.dll
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\bin\Debug\ApplicationCore.pdb
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\bin\Debug\Antlr3.Runtime.dll
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\bin\Debug\Infraestructure.dll
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\bin\Debug\WebGrease.dll
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\bin\Debug\log4net.dll
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\bin\Debug\EntityFramework.dll
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\bin\Debug\Infraestructure.pdb
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\bin\Debug\Infraestructure.dll.config
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\bin\Debug\Antlr3.Runtime.pdb
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\bin\Debug\log4net.xml
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\bin\Debug\EntityFramework.xml
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\obj\Debug\ApplicationCore.csproj.AssemblyReference.cache
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\obj\Debug\ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\obj\Debug\ApplicationCore.csproj.CopyComplete
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\obj\Debug\ApplicationCore.dll
+C:\Users\Alonso Arce Mora\source\repos\appCondominiosBuenaVista\ApplicationCore\obj\Debug\ApplicationCore.pdb

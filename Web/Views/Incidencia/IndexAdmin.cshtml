@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Infraestructure.Models.Incidencia>
+
+@{
+    ViewBag.Title = "Mantenimiento Incidencias";
+}
+<div id="lista">   
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.IdIncidencia)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.EstadoIncidencia)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.FechaIncidencia)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="resultado">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.IdIncidencia)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.EstadoIncidencia)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FechaIncidencia)
+                            </td>
+                            <td>
+                                <a href="@Url.Action("Edit", "Incidencia", new { id = item.IdIncidencia })" class="btn btn-primary"><i class="fa-solid fa-pen"></i> Editar</a>
+                                @*<a href="@Url.Action("Details", "Incidencia", new { id = item.IdIncidencia })" class="btn btn-primary"><i class="fa-solid fa-circle-info"></i> Detalles</a>*@
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>    
+</div>
+

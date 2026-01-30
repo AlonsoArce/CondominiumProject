@@ -1,0 +1,58 @@
+﻿@model Infraestructure.Models.Informacion
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+@using (Html.BeginForm("Save", "Informacion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+<div id="lista">
+    <div class="form-horizontal">
+        <h4>Modificar Información</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IdInformacion)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TipoInformacion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("IdTipoInformacion", null, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Imagen, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="image"
+                       src="data:image/jpeg;charset=utf-8;base64,@Convert.ToBase64String(Model.Imagen)"
+                       id="ImagenProducto"
+                       style="height:75px;width:75px" />
+                @Html.HiddenFor(model => model.Imagen)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon  glyphicon-floppy-save"></span>
+                    Actualizar
+                </button>
+                @Html.ActionLink("Regresar al listado", "IndexAdmin", null, new { @class = "btn btn-secondary" })
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

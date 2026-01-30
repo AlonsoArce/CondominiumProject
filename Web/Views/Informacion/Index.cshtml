@@ -1,0 +1,71 @@
+﻿@model IEnumerable<Infraestructure.Models.Informacion>
+
+@{
+    ViewBag.Title = "Listado de Informacion";
+}
+
+<div id="lista">
+    <h2>Listado de Informacion</h2>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <h1 class="my-4">Tipo Informacion</h1>
+            <div class="list-group">
+                <button class="list-group-item" onclick="getTipo(0)">Todos</button>
+                @foreach (var item in (List<Infraestructure.Models.TipoInformacion>)ViewBag.listaTipos)
+                {
+                    <button class="list-group-item" onclick="getTipo(@item.IdTipo)">@item.Descripcion</button>
+                }
+
+            </div>
+        </div>
+
+        <div class="col-lg-9">
+            <div id="resultado" class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-sm-3">
+                        <div class="card">
+                            <img src="data:image/jpeg;charset=utf-8;base64,@Convert.ToBase64String(item.Imagen)"
+                                 alt="Imagen @Html.DisplayFor(modelItem => item.Descripcion)" class="img-thumbnail" />
+                            <div class="card-body">
+                                <h5 class="card-title">@Html.DisplayFor(modelItem => item.Descripcion)</h5>
+                                <h6 class="card-subtitle mb-2 text-muted"> <i class="fa-solid fa-circle-user"></i> @Html.DisplayFor(modelItem => item.TipoInformacion.Descripcion)</h6>
+                                <div class="card-body">
+                                    @* Accion Orden *@
+
+                                </div>
+
+                                <div class="btn-group">
+                                    @* Detalle Ajax Modal
+                                        <button class="btn btn-warning" onclick="detalle(@item.IdLibro)">Detalle</button>
+                                        <button class="btn btn-primary" onclick="comprar(@item.IdLibro)">Comprar</button>*@
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+@* Modal *@
+
+@section Scripts{
+    <script type="text/javascript">
+        function getTipo(idTipo) {
+            $.ajax({
+                method: 'GET',
+                url: '/Informacion/infoByTipo',
+                data: { 'id': idTipo },
+                success: function (response) {
+                    $('#resultado').html('');
+                    $('#resultado').html(response);
+                }, error: function (xhr, status, error) {
+                    console.log('Error' + error + ',No Error' + xhr.status);
+                }
+            })
+        }        
+    </script>
+}

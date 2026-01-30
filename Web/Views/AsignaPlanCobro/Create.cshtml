@@ -1,0 +1,74 @@
+﻿@model Infraestructure.Models.AsignaPlanCobro
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+
+
+@using (Html.BeginForm("Save", "AsignaPlanCobro", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.PlanCobro, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.IdPlanCobro,
+                   (SelectList)ViewBag.PlanesCobro,
+                   "Seleccione un Plan de Cobro",
+                   htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Residencia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.IdResidencia,
+                (SelectList)ViewBag.Residencias,
+                "Seleccione una Residencia",
+                htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>       
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MesAsignado, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.MesAsignado,
+                   (SelectList)ViewBag.Meses,
+                   "Seleccione un mes",
+                   htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Estado,
+                   (SelectList)ViewBag.Estados,
+                   "Seleccione un estado",
+                   htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon  glyphicon-floppy-save"></span>
+                    Guardar
+                </button>
+                @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-secondary" })
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

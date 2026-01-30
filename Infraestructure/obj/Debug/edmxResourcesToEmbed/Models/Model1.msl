@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CondominioModelStoreContainer" CdmEntityContainer="CondominioEntities">
+    <EntitySetMapping Name="AsignaPlanCobro">
+      <EntityTypeMapping TypeName="CondominioModel.AsignaPlanCobro">
+        <MappingFragment StoreEntitySet="AsignaPlanCobro">
+          <ScalarProperty Name="IdPlanCobro" ColumnName="IdPlanCobro" />
+          <ScalarProperty Name="IdResidencia" ColumnName="IdResidencia" />
+          <ScalarProperty Name="FechaAsignacion" ColumnName="FechaAsignacion" />
+          <ScalarProperty Name="MesAsignado" ColumnName="MesAsignado" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Incidencia">
+      <EntityTypeMapping TypeName="CondominioModel.Incidencia">
+        <MappingFragment StoreEntitySet="Incidencia">
+          <ScalarProperty Name="IdIncidencia" ColumnName="IdIncidencia" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="EstadoIncidencia" ColumnName="EstadoIncidencia" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="FechaIncidencia" ColumnName="FechaIncidencia" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Informacion">
+      <EntityTypeMapping TypeName="CondominioModel.Informacion">
+        <MappingFragment StoreEntitySet="Informacion">
+          <ScalarProperty Name="IdInformaicon" ColumnName="IdInformaicon" />
+          <ScalarProperty Name="TipoInformacion" ColumnName="TipoInformacion" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PlanCobro">
+      <EntityTypeMapping TypeName="CondominioModel.PlanCobro">
+        <MappingFragment StoreEntitySet="PlanCobro">
+          <ScalarProperty Name="IdPlanCobro" ColumnName="IdPlanCobro" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReservaAreaComun">
+      <EntityTypeMapping TypeName="CondominioModel.ReservaAreaComun">
+        <MappingFragment StoreEntitySet="ReservaAreaComun">
+          <ScalarProperty Name="IdReserva" ColumnName="IdReserva" />
+          <ScalarProperty Name="IdResidencia" ColumnName="IdResidencia" />
+          <ScalarProperty Name="DescrAreaComun" ColumnName="DescrAreaComun" />
+          <ScalarProperty Name="FechaSolicitud" ColumnName="FechaSolicitud" />
+          <ScalarProperty Name="FechaReserva" ColumnName="FechaReserva" />
+          <ScalarProperty Name="HorasReserva" ColumnName="HorasReserva" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Residencia">
+      <EntityTypeMapping TypeName="CondominioModel.Residencia">
+        <MappingFragment StoreEntitySet="Residencia">
+          <ScalarProperty Name="IdResidencia" ColumnName="IdResidencia" />
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="CantPersonas" ColumnName="CantPersonas" />
+          <ScalarProperty Name="CantAutos" ColumnName="CantAutos" />
+          <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RubroCobro">
+      <EntityTypeMapping TypeName="CondominioModel.RubroCobro">
+        <MappingFragment StoreEntitySet="RubroCobro">
+          <ScalarProperty Name="IdRubro" ColumnName="IdRubro" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="MontoRubro" ColumnName="MontoRubro" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuario">
+      <EntityTypeMapping TypeName="CondominioModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuario">
+          <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+          <ScalarProperty Name="Correo" ColumnName="Correo" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+          <ScalarProperty Name="Rol" ColumnName="Rol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AsignaRubroCobro" TypeName="CondominioModel.AsignaRubroCobro" StoreEntitySet="AsignaRubroCobro">
+      <EndProperty Name="PlanCobro">
+        <ScalarProperty Name="IdPlanCobro" ColumnName="IdPlanCobro" />
+      </EndProperty>
+      <EndProperty Name="RubroCobro">
+        <ScalarProperty Name="IdRubro" ColumnName="IdRubroCobro" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

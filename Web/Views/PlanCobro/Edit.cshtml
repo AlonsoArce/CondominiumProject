@@ -1,0 +1,61 @@
+﻿@model Infraestructure.Models.PlanCobro
+
+@{
+    ViewBag.Title = "Editar";
+}
+
+
+@using (Html.BeginForm("Save", "PlanCobro", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+<div id="lista">
+    <div class="form-horizontal">
+        <h4>Editar Plan de Cobro</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IdPlanCobro)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MontoTotal, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <div class="input-group mb-3">
+                    <span class="input-group-text">&cent;</span>
+                    @Html.EditorFor(model => model.MontoTotal, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                </div>
+
+                @Html.ValidationMessageFor(model => model.MontoTotal, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.RubroCobro, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("selectedRubros",
+               (MultiSelectList)ViewBag.IdRubro,
+               htmlAttributes: new { @class = "form-control", multiple = "multiple" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon  glyphicon-floppy-save"></span>
+                    Actualizar
+                </button>
+                @Html.ActionLink("Regresar al listado", "Index", null, new { @class = "btn btn-secondary" })
+            </div>
+        </div>
+    </div>
+</div>
+ }
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }

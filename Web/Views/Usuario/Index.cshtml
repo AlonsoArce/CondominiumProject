@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Infraestructure.Models.Usuario>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div id="lista">
+    <p>
+        <a href="@Url.Action("Create", "Usuario")" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Crear Usuario</a>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellidos)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Correo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellidos)
+                </td>
+                <td>
+                <td>
+                    <a href="@Url.Action("Edit", "Usuario", new { id = item.IdUsuario })" class="btn btn-primary"><i class="fa-solid fa-pen"></i> Editar</a>
+                    <a href="@Url.Action("Details", "Usuario", new { id = item.IdUsuario })" class="btn btn-info"><i class="fa-solid fa-circle-info"></i> Detalles</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

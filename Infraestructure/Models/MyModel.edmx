@@ -1,0 +1,595 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CondominioModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AsignaPlanCobro">
+          <Key>
+            <PropertyRef Name="IdPlanCobro" />
+            <PropertyRef Name="IdResidencia" />
+            <PropertyRef Name="MesAsignado" />
+          </Key>
+          <Property Name="IdPlanCobro" Type="int" Nullable="false" />
+          <Property Name="IdResidencia" Type="int" Nullable="false" />
+          <Property Name="MesAsignado" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AsignaRubroCobro">
+          <Key>
+            <PropertyRef Name="IdPlanCobro" />
+            <PropertyRef Name="IdRubroCobro" />
+          </Key>
+          <Property Name="IdPlanCobro" Type="int" Nullable="false" />
+          <Property Name="IdRubroCobro" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Incidencia">
+          <Key>
+            <PropertyRef Name="IdIncidencia" />
+          </Key>
+          <Property Name="IdIncidencia" Type="int" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="EstadoIncidencia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaIncidencia" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Informacion">
+          <Key>
+            <PropertyRef Name="IdInformacion" />
+          </Key>
+          <Property Name="IdInformacion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdTipoInformacion" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Imagen" Type="varbinary(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PlanCobro">
+          <Key>
+            <PropertyRef Name="IdPlanCobro" />
+          </Key>
+          <Property Name="IdPlanCobro" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MontoTotal" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="ReservaAreaComun">
+          <Key>
+            <PropertyRef Name="IdReserva" />
+          </Key>
+          <Property Name="IdReserva" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdResidencia" Type="int" Nullable="false" />
+          <Property Name="AreaComun" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaSolicitud" Type="datetime" Nullable="false" />
+          <Property Name="FechaReserva" Type="datetime" Nullable="false" />
+          <Property Name="Horario" Type="varchar(max)" Nullable="false" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Residencia">
+          <Key>
+            <PropertyRef Name="IdResidencia" />
+          </Key>
+          <Property Name="IdResidencia" Type="int" Nullable="false" />
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="CantPersonas" Type="int" />
+          <Property Name="CantAutos" Type="int" />
+          <Property Name="FechaInicio" Type="datetime" />
+          <Property Name="Estado" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RubroCobro">
+          <Key>
+            <PropertyRef Name="IdRubro" />
+          </Key>
+          <Property Name="IdRubro" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MontoRubro" Type="numeric" Precision="18" Scale="2" />
+        </EntityType>
+        <EntityType Name="TipoInformacion">
+          <Key>
+            <PropertyRef Name="IdTipo" />
+          </Key>
+          <Property Name="IdTipo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="int" Nullable="false" />
+          <Property Name="Correo" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellidos" Type="varchar" MaxLength="50" />
+          <Property Name="Rol" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_AsignaPlanCobro_PlanCobro">
+          <End Role="PlanCobro" Type="Self.PlanCobro" Multiplicity="1" />
+          <End Role="AsignaPlanCobro" Type="Self.AsignaPlanCobro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanCobro">
+              <PropertyRef Name="IdPlanCobro" />
+            </Principal>
+            <Dependent Role="AsignaPlanCobro">
+              <PropertyRef Name="IdPlanCobro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AsignaPlanCobro_Residencia">
+          <End Role="Residencia" Type="Self.Residencia" Multiplicity="1" />
+          <End Role="AsignaPlanCobro" Type="Self.AsignaPlanCobro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Residencia">
+              <PropertyRef Name="IdResidencia" />
+            </Principal>
+            <Dependent Role="AsignaPlanCobro">
+              <PropertyRef Name="IdResidencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AsignaRubroCobro_PlanCobro">
+          <End Role="PlanCobro" Type="Self.PlanCobro" Multiplicity="1" />
+          <End Role="AsignaRubroCobro" Type="Self.AsignaRubroCobro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanCobro">
+              <PropertyRef Name="IdPlanCobro" />
+            </Principal>
+            <Dependent Role="AsignaRubroCobro">
+              <PropertyRef Name="IdPlanCobro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AsignaRubroCobro_RubroCobro">
+          <End Role="RubroCobro" Type="Self.RubroCobro" Multiplicity="1" />
+          <End Role="AsignaRubroCobro" Type="Self.AsignaRubroCobro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RubroCobro">
+              <PropertyRef Name="IdRubro" />
+            </Principal>
+            <Dependent Role="AsignaRubroCobro">
+              <PropertyRef Name="IdRubroCobro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencia_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Incidencia" Type="Self.Incidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Incidencia">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Informacion_TipoInformacion">
+          <End Role="TipoInformacion" Type="Self.TipoInformacion" Multiplicity="1" />
+          <End Role="Informacion" Type="Self.Informacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoInformacion">
+              <PropertyRef Name="IdTipo" />
+            </Principal>
+            <Dependent Role="Informacion">
+              <PropertyRef Name="IdTipoInformacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservaAreaComun_Residencia">
+          <End Role="Residencia" Type="Self.Residencia" Multiplicity="1" />
+          <End Role="ReservaAreaComun" Type="Self.ReservaAreaComun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Residencia">
+              <PropertyRef Name="IdResidencia" />
+            </Principal>
+            <Dependent Role="ReservaAreaComun">
+              <PropertyRef Name="IdResidencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Residencia_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Residencia" Type="Self.Residencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Residencia">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CondominioModelStoreContainer">
+          <EntitySet Name="AsignaPlanCobro" EntityType="Self.AsignaPlanCobro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AsignaRubroCobro" EntityType="Self.AsignaRubroCobro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Incidencia" EntityType="Self.Incidencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Informacion" EntityType="Self.Informacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PlanCobro" EntityType="Self.PlanCobro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ReservaAreaComun" EntityType="Self.ReservaAreaComun" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Residencia" EntityType="Self.Residencia" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RubroCobro" EntityType="Self.RubroCobro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TipoInformacion" EntityType="Self.TipoInformacion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AsignaPlanCobro_PlanCobro" Association="Self.FK_AsignaPlanCobro_PlanCobro">
+            <End Role="PlanCobro" EntitySet="PlanCobro" />
+            <End Role="AsignaPlanCobro" EntitySet="AsignaPlanCobro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AsignaPlanCobro_Residencia" Association="Self.FK_AsignaPlanCobro_Residencia">
+            <End Role="Residencia" EntitySet="Residencia" />
+            <End Role="AsignaPlanCobro" EntitySet="AsignaPlanCobro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AsignaRubroCobro_PlanCobro" Association="Self.FK_AsignaRubroCobro_PlanCobro">
+            <End Role="PlanCobro" EntitySet="PlanCobro" />
+            <End Role="AsignaRubroCobro" EntitySet="AsignaRubroCobro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AsignaRubroCobro_RubroCobro" Association="Self.FK_AsignaRubroCobro_RubroCobro">
+            <End Role="RubroCobro" EntitySet="RubroCobro" />
+            <End Role="AsignaRubroCobro" EntitySet="AsignaRubroCobro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidencia_Usuario" Association="Self.FK_Incidencia_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Incidencia" EntitySet="Incidencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Informacion_TipoInformacion" Association="Self.FK_Informacion_TipoInformacion">
+            <End Role="TipoInformacion" EntitySet="TipoInformacion" />
+            <End Role="Informacion" EntitySet="Informacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservaAreaComun_Residencia" Association="Self.FK_ReservaAreaComun_Residencia">
+            <End Role="Residencia" EntitySet="Residencia" />
+            <End Role="ReservaAreaComun" EntitySet="ReservaAreaComun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Residencia_Usuario" Association="Self.FK_Residencia_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Residencia" EntitySet="Residencia" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CondominioModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AsignaPlanCobro">
+          <Key>
+            <PropertyRef Name="IdPlanCobro" />
+            <PropertyRef Name="IdResidencia" />
+            <PropertyRef Name="MesAsignado" />
+          </Key>
+          <Property Name="IdPlanCobro" Type="Int32" Nullable="false" />
+          <Property Name="IdResidencia" Type="Int32" Nullable="false" />
+          <Property Name="MesAsignado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PlanCobro" Relationship="Self.FK_AsignaPlanCobro_PlanCobro" FromRole="AsignaPlanCobro" ToRole="PlanCobro" />
+          <NavigationProperty Name="Residencia" Relationship="Self.FK_AsignaPlanCobro_Residencia" FromRole="AsignaPlanCobro" ToRole="Residencia" />
+        </EntityType>
+        <EntityType Name="Incidencia">
+          <Key>
+            <PropertyRef Name="IdIncidencia" />
+          </Key>
+          <Property Name="IdIncidencia" Type="Int32" Nullable="false" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="EstadoIncidencia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FechaIncidencia" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Incidencia_Usuario" FromRole="Incidencia" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="Informacion">
+          <Key>
+            <PropertyRef Name="IdInformacion" />
+          </Key>
+          <Property Name="IdInformacion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdTipoInformacion" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Imagen" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <NavigationProperty Name="TipoInformacion" Relationship="Self.FK_Informacion_TipoInformacion" FromRole="Informacion" ToRole="TipoInformacion" />
+        </EntityType>
+        <EntityType Name="PlanCobro">
+          <Key>
+            <PropertyRef Name="IdPlanCobro" />
+          </Key>
+          <Property Name="IdPlanCobro" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MontoTotal" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="AsignaPlanCobro" Relationship="Self.FK_AsignaPlanCobro_PlanCobro" FromRole="PlanCobro" ToRole="AsignaPlanCobro" />
+          <NavigationProperty Name="RubroCobro" Relationship="Self.AsignaRubroCobro" FromRole="PlanCobro" ToRole="RubroCobro" />
+        </EntityType>
+        <EntityType Name="ReservaAreaComun">
+          <Key>
+            <PropertyRef Name="IdReserva" />
+          </Key>
+          <Property Name="IdReserva" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdResidencia" Type="Int32" Nullable="false" />
+          <Property Name="AreaComun" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaSolicitud" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaReserva" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Horario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Residencia" Relationship="Self.FK_ReservaAreaComun_Residencia" FromRole="ReservaAreaComun" ToRole="Residencia" />
+        </EntityType>
+        <EntityType Name="Residencia">
+          <Key>
+            <PropertyRef Name="IdResidencia" />
+          </Key>
+          <Property Name="IdResidencia" Type="Int32" Nullable="false" />
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="CantPersonas" Type="Int32" />
+          <Property Name="CantAutos" Type="Int32" />
+          <Property Name="FechaInicio" Type="DateTime" Precision="3" />
+          <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="AsignaPlanCobro" Relationship="Self.FK_AsignaPlanCobro_Residencia" FromRole="Residencia" ToRole="AsignaPlanCobro" />
+          <NavigationProperty Name="ReservaAreaComun" Relationship="Self.FK_ReservaAreaComun_Residencia" FromRole="Residencia" ToRole="ReservaAreaComun" />
+          <NavigationProperty Name="Usuario" Relationship="Self.FK_Residencia_Usuario" FromRole="Residencia" ToRole="Usuario" />
+        </EntityType>
+        <EntityType Name="RubroCobro">
+          <Key>
+            <PropertyRef Name="IdRubro" />
+          </Key>
+          <Property Name="IdRubro" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MontoRubro" Type="Decimal" Precision="18" Scale="2" />
+          <NavigationProperty Name="PlanCobro" Relationship="Self.AsignaRubroCobro" FromRole="RubroCobro" ToRole="PlanCobro" />
+        </EntityType>
+        <EntityType Name="TipoInformacion">
+          <Key>
+            <PropertyRef Name="IdTipo" />
+          </Key>
+          <Property Name="IdTipo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Informacion" Relationship="Self.FK_Informacion_TipoInformacion" FromRole="TipoInformacion" ToRole="Informacion" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="IdUsuario" />
+          </Key>
+          <Property Name="IdUsuario" Type="Int32" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Rol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Incidencia" Relationship="Self.FK_Incidencia_Usuario" FromRole="Usuario" ToRole="Incidencia" />
+          <NavigationProperty Name="Residencia" Relationship="Self.FK_Residencia_Usuario" FromRole="Usuario" ToRole="Residencia" />
+        </EntityType>
+        <Association Name="FK_AsignaPlanCobro_PlanCobro">
+          <End Role="PlanCobro" Type="Self.PlanCobro" Multiplicity="1" />
+          <End Role="AsignaPlanCobro" Type="Self.AsignaPlanCobro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PlanCobro">
+              <PropertyRef Name="IdPlanCobro" />
+            </Principal>
+            <Dependent Role="AsignaPlanCobro">
+              <PropertyRef Name="IdPlanCobro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AsignaPlanCobro_Residencia">
+          <End Role="Residencia" Type="Self.Residencia" Multiplicity="1" />
+          <End Role="AsignaPlanCobro" Type="Self.AsignaPlanCobro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Residencia">
+              <PropertyRef Name="IdResidencia" />
+            </Principal>
+            <Dependent Role="AsignaPlanCobro">
+              <PropertyRef Name="IdResidencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Incidencia_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Incidencia" Type="Self.Incidencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Incidencia">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Informacion_TipoInformacion">
+          <End Role="TipoInformacion" Type="Self.TipoInformacion" Multiplicity="1" />
+          <End Role="Informacion" Type="Self.Informacion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TipoInformacion">
+              <PropertyRef Name="IdTipo" />
+            </Principal>
+            <Dependent Role="Informacion">
+              <PropertyRef Name="IdTipoInformacion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ReservaAreaComun_Residencia">
+          <End Role="Residencia" Type="Self.Residencia" Multiplicity="1" />
+          <End Role="ReservaAreaComun" Type="Self.ReservaAreaComun" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Residencia">
+              <PropertyRef Name="IdResidencia" />
+            </Principal>
+            <Dependent Role="ReservaAreaComun">
+              <PropertyRef Name="IdResidencia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Residencia_Usuario">
+          <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+          <End Role="Residencia" Type="Self.Residencia" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuario">
+              <PropertyRef Name="IdUsuario" />
+            </Principal>
+            <Dependent Role="Residencia">
+              <PropertyRef Name="IdUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AsignaRubroCobro">
+          <End Role="PlanCobro" Type="Self.PlanCobro" Multiplicity="*" />
+          <End Role="RubroCobro" Type="Self.RubroCobro" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="CondominioEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AsignaPlanCobro" EntityType="Self.AsignaPlanCobro" />
+          <EntitySet Name="Incidencia" EntityType="Self.Incidencia" />
+          <EntitySet Name="Informacion" EntityType="Self.Informacion" />
+          <EntitySet Name="PlanCobro" EntityType="Self.PlanCobro" />
+          <EntitySet Name="ReservaAreaComun" EntityType="Self.ReservaAreaComun" />
+          <EntitySet Name="Residencia" EntityType="Self.Residencia" />
+          <EntitySet Name="RubroCobro" EntityType="Self.RubroCobro" />
+          <EntitySet Name="TipoInformacion" EntityType="Self.TipoInformacion" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <AssociationSet Name="FK_AsignaPlanCobro_PlanCobro" Association="Self.FK_AsignaPlanCobro_PlanCobro">
+            <End Role="PlanCobro" EntitySet="PlanCobro" />
+            <End Role="AsignaPlanCobro" EntitySet="AsignaPlanCobro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AsignaPlanCobro_Residencia" Association="Self.FK_AsignaPlanCobro_Residencia">
+            <End Role="Residencia" EntitySet="Residencia" />
+            <End Role="AsignaPlanCobro" EntitySet="AsignaPlanCobro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Incidencia_Usuario" Association="Self.FK_Incidencia_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Incidencia" EntitySet="Incidencia" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Informacion_TipoInformacion" Association="Self.FK_Informacion_TipoInformacion">
+            <End Role="TipoInformacion" EntitySet="TipoInformacion" />
+            <End Role="Informacion" EntitySet="Informacion" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ReservaAreaComun_Residencia" Association="Self.FK_ReservaAreaComun_Residencia">
+            <End Role="Residencia" EntitySet="Residencia" />
+            <End Role="ReservaAreaComun" EntitySet="ReservaAreaComun" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Residencia_Usuario" Association="Self.FK_Residencia_Usuario">
+            <End Role="Usuario" EntitySet="Usuario" />
+            <End Role="Residencia" EntitySet="Residencia" />
+          </AssociationSet>
+          <AssociationSet Name="AsignaRubroCobro" Association="Self.AsignaRubroCobro">
+            <End Role="PlanCobro" EntitySet="PlanCobro" />
+            <End Role="RubroCobro" EntitySet="RubroCobro" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CondominioModelStoreContainer" CdmEntityContainer="CondominioEntities">
+          <EntitySetMapping Name="AsignaPlanCobro">
+            <EntityTypeMapping TypeName="CondominioModel.AsignaPlanCobro">
+              <MappingFragment StoreEntitySet="AsignaPlanCobro">
+                <ScalarProperty Name="IdPlanCobro" ColumnName="IdPlanCobro" />
+                <ScalarProperty Name="IdResidencia" ColumnName="IdResidencia" />
+                <ScalarProperty Name="MesAsignado" ColumnName="MesAsignado" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Incidencia">
+            <EntityTypeMapping TypeName="CondominioModel.Incidencia">
+              <MappingFragment StoreEntitySet="Incidencia">
+                <ScalarProperty Name="IdIncidencia" ColumnName="IdIncidencia" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="EstadoIncidencia" ColumnName="EstadoIncidencia" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="FechaIncidencia" ColumnName="FechaIncidencia" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Informacion">
+            <EntityTypeMapping TypeName="CondominioModel.Informacion">
+              <MappingFragment StoreEntitySet="Informacion">
+                <ScalarProperty Name="IdInformacion" ColumnName="IdInformacion" />
+                <ScalarProperty Name="IdTipoInformacion" ColumnName="IdTipoInformacion" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Imagen" ColumnName="Imagen" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PlanCobro">
+            <EntityTypeMapping TypeName="CondominioModel.PlanCobro">
+              <MappingFragment StoreEntitySet="PlanCobro">
+                <ScalarProperty Name="IdPlanCobro" ColumnName="IdPlanCobro" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="MontoTotal" ColumnName="MontoTotal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ReservaAreaComun">
+            <EntityTypeMapping TypeName="CondominioModel.ReservaAreaComun">
+              <MappingFragment StoreEntitySet="ReservaAreaComun">
+                <ScalarProperty Name="IdReserva" ColumnName="IdReserva" />
+                <ScalarProperty Name="IdResidencia" ColumnName="IdResidencia" />
+                <ScalarProperty Name="AreaComun" ColumnName="AreaComun" />
+                <ScalarProperty Name="FechaSolicitud" ColumnName="FechaSolicitud" />
+                <ScalarProperty Name="FechaReserva" ColumnName="FechaReserva" />
+                <ScalarProperty Name="Horario" ColumnName="Horario" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Residencia">
+            <EntityTypeMapping TypeName="CondominioModel.Residencia">
+              <MappingFragment StoreEntitySet="Residencia">
+                <ScalarProperty Name="IdResidencia" ColumnName="IdResidencia" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="CantPersonas" ColumnName="CantPersonas" />
+                <ScalarProperty Name="CantAutos" ColumnName="CantAutos" />
+                <ScalarProperty Name="FechaInicio" ColumnName="FechaInicio" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RubroCobro">
+            <EntityTypeMapping TypeName="CondominioModel.RubroCobro">
+              <MappingFragment StoreEntitySet="RubroCobro">
+                <ScalarProperty Name="IdRubro" ColumnName="IdRubro" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="MontoRubro" ColumnName="MontoRubro" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TipoInformacion">
+            <EntityTypeMapping TypeName="CondominioModel.TipoInformacion">
+              <MappingFragment StoreEntitySet="TipoInformacion">
+                <ScalarProperty Name="IdTipo" ColumnName="IdTipo" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="CondominioModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AsignaRubroCobro" TypeName="CondominioModel.AsignaRubroCobro" StoreEntitySet="AsignaRubroCobro">
+            <EndProperty Name="PlanCobro">
+              <ScalarProperty Name="IdPlanCobro" ColumnName="IdPlanCobro" />
+            </EndProperty>
+            <EndProperty Name="RubroCobro">
+              <ScalarProperty Name="IdRubro" ColumnName="IdRubroCobro" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

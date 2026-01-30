@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Infraestructure.Models.AsignaPlanCobro>
+
+@{
+    ViewBag.Title = "GestionDeudas";
+}
+<div id="lista">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanCobro.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Residencia.Usuario.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MesAsignado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanCobro.MontoTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlanCobro.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Residencia.Usuario.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MesAsignado)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlanCobro.MontoTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    <a href="@Url.Action("EditGestionDeuda", "AsignaPlanCobro", new { idPlan = item.IdPlanCobro, idResid = item.IdResidencia, mes = item.MesAsignado })"
+                       class="btn btn-primary"><i class="fa-solid fa-pen"></i> Registrar pago</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

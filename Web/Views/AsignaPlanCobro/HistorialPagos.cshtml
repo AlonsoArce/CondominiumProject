@@ -1,0 +1,126 @@
+﻿@model IEnumerable<Infraestructure.Models.AsignaPlanCobro>
+
+@{
+    ViewBag.Title = "HistorialPagos";
+}
+
+<div id="lista">
+    <div class="row">
+        <div class="col-lg-8">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PlanCobro.Descripcion)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Residencia.Usuario.Nombre)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MesAsignado)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.PlanCobro.MontoTotal)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Estado)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="resultado">
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PlanCobro.Descripcion)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Residencia.Usuario.Nombre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MesAsignado)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.PlanCobro.MontoTotal)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Estado)
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-4">
+            <div class="card my-4">
+                <h5 class="card-header">Buscar pagos por residencia</h5>
+                <div class="card-body">
+                    <div class="input-group">
+                        @Html.TextBox("filtro", "", new { @class = "form-control" })
+                        <button type="button" id="btnBuscar" class="btn btn-secondary">Buscar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card my-4">
+                <h5 class="card-header">Buscar pagos por mes</h5>
+                <div class="card-body">
+                    <div class="input-group">
+                        @Html.TextBox("mes", "", new { @class = "form-control" })
+                        <button type="button" id="btnMes" class="btn btn-secondary">Buscar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">     
+        $(function () {
+            @*@Html.Raw(Json.Encode(ViewBag.listaNombres));*@
+            let lista = @Html.Raw(Json.Encode(ViewBag.listaResidentes));
+            $("#filtro").autocomplete({
+                source:lista
+                })
+        })
+        $("#btnBuscar").click(function () {
+            var filtro = $("#filtro").val();
+            $.ajax({
+                method: 'POST',
+                url: '/AsignaPlanCobro/historialPorResidencia',
+                data: { 'filtro': filtro },
+                success: function (response) {
+                    $('#resultado').html('');
+                    $('#resultado').html(response);
+                }, error: function (xhr, status, error) {
+                    console.log('Error' + error + ',No Error' + xhr.status);
+                }
+            })
+        })
+
+    </script>
+    <script>
+        $(function () {
+            @*@Html.Raw(Json.Encode(ViewBag.listaNombres));*@
+            let lista = @Html.Raw(Json.Encode(ViewBag.listaMeses));
+            $("#mes").autocomplete({
+                source:lista
+                })
+        })
+        $("#btnMes").click(function () {
+            var mes = $("#mes").val();
+            $.ajax({
+                method: 'POST',
+                url: '/AsignaPlanCobro/historialPorMes',
+                data: { 'mes': mes },
+                success: function (response) {
+                    $('#resultado').html('');
+                    $('#resultado').html(response);
+                }, error: function (xhr, status, error) {
+                    console.log('Error' + error + ',No Error' + xhr.status);
+                }
+            })
+        })
+    </script>
+}

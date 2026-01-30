@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Infraestructure.Models.ReservaAreaComun>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaComun)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FechaReserva)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Horario)
+        </th>
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AreaComun)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaReserva)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Horario)
+            </td>
+
+
+            <td>
+                <a href="@Url.Action("Edit", "ReservaAreaComun", new { idReserva = item.IdReserva })" class="btn btn-primary"><i class="fa-solid fa-pen"></i> Editar</a>
+                <a href="@Url.Action("Details", "ReservaAreaComun", new { id = item.IdReserva })" class="btn btn-primary"><i class="fa-solid fa-circle-info"></i> Detalles</a>
+            </td>
+        </tr>
+    }
+</table>

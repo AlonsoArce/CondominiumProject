@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Infraestructure.Models.AsignaPlanCobro>
+
+@{
+    ViewBag.Title = "EstadoCuenta";
+}
+
+<div id="lista">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Residencia.IdResidencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Residencia.Usuario.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanCobro.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MesAsignado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanCobro.MontoTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            if (item.Estado == "Pendiente")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Residencia.IdResidencia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Residencia.Usuario.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlanCobro.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MesAsignado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlanCobro.MontoTotal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                </tr>
+            }
+        }
+
+        @foreach (var item in Model)
+        {
+            if (item.Estado == "Cancelado")
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Residencia.IdResidencia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Residencia.Usuario.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlanCobro.Descripcion)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MesAsignado)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlanCobro.MontoTotal)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estado)
+                    </td>
+                </tr>
+            }
+        }
+
+    </table>
+</div>

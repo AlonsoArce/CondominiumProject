@@ -1,0 +1,115 @@
+﻿@model Infraestructure.Models.AsignaPlanCobro
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>AsignaPlanCobro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdPlanCobro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdPlanCobro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaAsignacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaAsignacion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MesAsignado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MesAsignado)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoTotalPagar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoTotalPagar)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        @*Informacion del usuario*@
+        <dt>
+            @Html.DisplayNameFor(model => model.Residencia.Usuario.IdUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Residencia.Usuario.IdUsuario)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Residencia.Usuario.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Residencia.Usuario.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Residencia.Usuario.Apellidos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Residencia.Usuario.Apellidos)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Residencia.Usuario.Correo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Residencia.Usuario.Correo)
+        </dd>
+        @*Informacion de la residencia*@
+        <dt>
+            @Html.DisplayNameFor(model => model.Residencia.IdResidencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Residencia.IdResidencia)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Residencia.CantPersonas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Residencia.CantPersonas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Residencia.CantAutos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Residencia.CantAutos)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Residencia.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Residencia.Estado)
+        </dd>
+        @*Aqui debe ir el listado de deudas vigentes y pagas*@
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Details", "Details", new { id = Model.IdPlanCobro }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

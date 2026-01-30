@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Infraestructure.Models.ReservaAreaComun>
+
+@{
+    ViewBag.Title = "Lista de Reservas";
+}
+
+<div class="row" id="lista">
+    <div class="col-lg-3">
+        <h1 class="my-4 text-light">Estado de las Reservaciones</h1>
+        <div class="list-group">
+            @foreach(var item in ((IEnumerable<String>)ViewBag.Estados))
+            {
+                <button class="list-group-item" onclick="getTipo(@item)">@item</button>
+            }
+
+        </div>
+    </div>
+    <div class="col-lg-9">
+            <div id="resultado" class="row">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AreaComun)
+                        </th>
+
+                        <th>
+                            @Html.DisplayNameFor(model => model.FechaReserva)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Horario)
+                        </th>
+
+
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AreaComun)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FechaReserva)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Horario)
+                            </td>
+
+
+                            <td>
+                                <a href="@Url.Action("Edit", "ReservaAreaComun", new { idReserva = item.IdReserva })" class="btn btn-primary"><i class="fa-solid fa-pen"></i> Editar</a>
+                                <a href="@Url.Action("Details", "ReservaAreaComun", new { id = item.IdReserva })" class="btn btn-primary"><i class="fa-solid fa-circle-info"></i> Detalles</a>
+                            </td>
+                        </tr>
+                     }
+                </table>
+            </div>
+        </div>
+    </div>
+
+@section Scripts{
+    <script type="text/javascript">
+        function getTipo(estado) {
+            $.ajax({
+                method: 'GET',
+                url: '/ReservaAreaComun/reservasByEstado',
+                data: { 'estadoSeleccionado': estado },
+                success: function (response) {
+                    $('#resultado').html('');
+                    $('#resultado').html(response);
+                }, error: function (xhr, status, error) {
+                    console.log('Error' + error + ',No Error' + xhr.status);
+                }
+            })
+        }
+    </script>
+}

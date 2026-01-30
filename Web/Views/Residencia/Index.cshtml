@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Infraestructure.Models.Residencia>
+
+@{
+    ViewBag.Title = "Lista de Residencias";
+}
+
+
+<div id="lista">
+    <p>
+        <a href="@Url.Action("Create", "Residencia")" class="btn btn-primary btn-lg"><i class="fa-solid fa-plus"></i> Crear Residencia</a>
+    </p>
+    <table class="table align-items-center justify-content-center">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdResidencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Usuario.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Estado)
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdResidencia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Estado)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Residencia", new { id = item.IdResidencia })" class="btn btn-primary"><i class="fa-solid fa-nfc-pen"></i> Editar</a>
+                    <a href="@Url.Action("Details", "Residencia", new { id = item.IdResidencia })" class="btn btn-info"><i class="fa-solid fa-circle-info"></i> Detalles</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

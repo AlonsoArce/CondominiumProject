@@ -1,0 +1,23 @@
+﻿@model IEnumerable<Infraestructure.Models.AsignaPlanCobro>
+
+@foreach (var item in Model)
+{
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.PlanCobro.Descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Residencia.Usuario.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MesAsignado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlanCobro.MontoTotal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+    </tr>
+}

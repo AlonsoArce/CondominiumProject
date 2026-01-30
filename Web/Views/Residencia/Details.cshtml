@@ -1,0 +1,74 @@
+﻿@model Infraestructure.Models.Residencia
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div id="dl">
+    <h4>Detalle de la Residencia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdResidencia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdResidencia)
+        </dd>       
+        <dt>
+            @Html.DisplayNameFor(model => model.CantPersonas)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantPersonas)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CantAutos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CantAutos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            Informacion del Usuario
+            -------------------------         
+        </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.Correo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.Correo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.Nombre)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.Nombre)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Usuario.Apellidos)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Usuario.Apellidos)
+        </dd>
+    </dl>    
+</div>
+

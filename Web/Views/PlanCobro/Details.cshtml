@@ -1,0 +1,36 @@
+﻿@model Infraestructure.Models.PlanCobro
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div id="dl">
+    <h4>Detalle del Plan de Cobro</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdPlanCobro)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IdPlanCobro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MontoTotal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MontoTotal)
+        </dd>      
+    </dl>   
+</div>
+<p>
+    @Html.ActionLink("Regresar al listado", "Index", null, new { @class = "btn btn-secondary" })
+</p>

@@ -1,0 +1,90 @@
+﻿@model Infraestructure.Models.ReservaAreaComun
+
+@{
+    ViewBag.Title = "Edit";
+    DateTime fechaSolitud = ViewBag.FechaSolicitud;
+    DateTime fechaReserva = ViewBag.FechaReservacion;
+}
+
+@using (Html.BeginForm("Save", "ReservaAreaComun", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+<div id="lista">
+    <div class="form-horizontal">
+        <h4>Reservaciones de Area Comun</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.IdReserva)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.IdResidencia, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.IdResidencia, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.IdResidencia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AreaComun, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AreaComun, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.AreaComun, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FechaSolicitud, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaSolicitud, new
+                {
+                    htmlAttributes = new
+                    {
+                        @class = "form-control",
+                        @Value = fechaSolitud.ToString("yyyy-MM-dd"),
+                                 @readonly = "readonly"
+                    }
+                })
+                @Html.ValidationMessageFor(model => model.FechaSolicitud, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.FechaReserva, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FechaReserva, new { htmlAttributes = new { @class = "form-control", @Value = fechaReserva.ToString("yyyy-MM-dd"), @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.FechaReserva, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Horario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Horario, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.Horario, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Estado, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Estado", (SelectList)ViewBag.EstadoSeleccionado, null, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <button type="submit" class="btn btn-primary">
+                    <span class="glyphicon  glyphicon-floppy-save"></span>
+                    Actualizar
+                </button>
+                @Html.ActionLink("Regresar al listado", "IndexAdmin", null, new { @class = "btn btn-secondary" })
+            </div>
+        </div>
+    </div>
+</div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

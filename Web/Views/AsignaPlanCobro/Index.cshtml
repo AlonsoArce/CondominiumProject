@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Infraestructure.Models.AsignaPlanCobro>
+
+@{
+    ViewBag.Title = "Index";
+}
+<div id="lista">
+    <p>
+        <a href="@Url.Action("Create", "AsignaPlanCobro")" class="btn btn-primary"><i class="fa-solid fa-plus"></i> Asignar Plan de Cobro</a>
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PlanCobro.Descripcion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Residencia.Usuario.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MesAsignado)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PlanCobro.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Residencia.Usuario.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MesAsignado)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "AsignaPlanCobro", new { idPlan = item.IdPlanCobro, idResid = item.IdResidencia, mes = item.MesAsignado })" class="btn btn-primary"><i class="fa-solid fa-pen"></i> Editar</a>
+                    <a href="@Url.Action("Details", "AsignaPlanCobro", new { id = item.IdPlanCobro })" class="btn btn-info"><i class="fa-solid fa-circle-info"></i> Detalles</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

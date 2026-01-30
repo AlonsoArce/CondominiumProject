@@ -1,0 +1,76 @@
+﻿body {
+    margin: 0;
+    min-height: 100vh;
+    background-image: url('images/inicio.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    opacity:1.0;
+}
+
+.principal {
+    margin: 0;
+    min-height: 100vh;
+    background-image: url('images/principal.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.table{
+    background-color: azure;
+    color: black;
+    font-family:Arial;
+    border-inline-color:black;
+    opacity:0.9;
+    font-size:17px;
+}
+
+.form-horizontal {
+    background-color:ghostwhite;
+    color: black;
+    font-family: Arial;
+    opacity: 0.9;   
+    position:absolute;
+    margin: 0;
+    width: 80%;
+}
+
+#logo {
+    margin: 0;
+    background-image: url('images/logo.png');
+    background-position: center;
+    text-indent: -1000px;
+    background-size: contain;
+    width: 50px;
+    height: 50px;
+    background-repeat: no-repeat;
+}
+
+#lista {
+    margin-top: 40px;
+    position:center;
+    justify-content: center;
+    align-items: center;
+    background-size:auto;
+}
+
+#dl {
+    background-color:beige;
+    text-align: center;
+    justify-content: center;
+    background-size: auto;
+    opacity:0.9;
+}
+
+h4{
+    text-align: center;
+    color:black;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+
+
