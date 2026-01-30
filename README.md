@@ -17,5 +17,16 @@ CSS
 
 SQL Server
 
-API 
+## BACKEND
+ADO.net
+ORM
+LINQ
+CRUD
+
+## FRONTEND
+HTML HELPERS
+Asynchronous JavaScript and XML
+JQuery
+Bootstrap
+
 
